@@ -1,0 +1,37 @@
+/* HomePage.module.css */
+
+.container {
+    /* display: flex;
+    align-items: flex-start; 
+    justify-content: space-between;  */
+    height: 100vh;
+    padding: 20px; /* Optional padding for better spacing */
+  }
+  
+  .upper_container {
+    display: flex;
+    align-items: flex-start; 
+    justify-content: space-between; 
+    text-align: center;
+    width: 100%; /* Occupy full width */
+  }
+  
+  .upper_container h1 {
+    color: #333;
+    margin-bottom: 10px; /* Add margin for spacing */
+  }
+  
+  .upper_container p {
+    color: #555;
+  }
+  
+  .upper_container p a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .upper_container p a:hover {
+    text-decoration: underline;
+  }
+  

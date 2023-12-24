@@ -1,0 +1,96 @@
+/* ProfilePage.module.css */
+
+.container {
+    text-align: center;
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .container p {
+    margin: 10px 0;
+  }
+  .container i {
+    color: blue;
+  }
+
+  .user_profile{
+    display: flex;
+    align-items: center;
+  }
+
+  .user_profile img{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+  }
+  
+  hr {
+    margin: 20px;
+  }
+  
+  .form {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+  }
+  
+  .form_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .form_header h1 {
+    margin: 0;
+  }
+  
+  .form_header button {
+    background-color: transparent;
+    color: transparent;
+    border: 1px solid red;
+    color: red;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .form_header button:hover {
+    background-color: #ddd;
+  }
+  
+  .form_input {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form_input label {
+    margin-bottom: 8px;
+  }
+  
+  .form_input input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .form_input button {
+    width: 100px;
+    padding: 8px;
+    margin-top: 16px;
+    background-color: rgb(101, 67, 4);
+    color: white;
+  }
+
+  .form_input button:hover {
+    background-color: rgb(134, 98, 30);
+  }
+
+  

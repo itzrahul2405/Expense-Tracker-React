@@ -1,0 +1,86 @@
+body {
+    max-width: 100vw;
+    height: 100vh;
+    background: linear-gradient(360deg, rgb(81, 172, 202), lightgreen);
+    margin: 0; 
+  }
+  
+  .container{
+    max-width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0; 
+  }
+
+  .signup_form {
+    min-width: 35%; /* Adjust as needed */
+    width: 25vw;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #1a0101;
+    box-shadow: 0px 0px 10px black;
+    border-radius: 8px;
+    background-color: rgb(202, 192, 181);
+  }
+  
+  .signup_form div {
+    width: 100%;
+    max-width: 350px; /* Set a max-width if needed */
+    margin: auto; /* Center the element */
+  }
+  
+  .signup_form h1 {
+    text-align: center;
+  }
+  
+  .signup_form label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  .signup_form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+  }
+
+  .signup_form a {
+    margin-left: 5px;
+    padding: 8px;
+    margin-bottom: 16px;
+    font-weight: 700;
+    color: black;
+  }
+
+  .signup_form a:hover{
+    cursor: pointer;
+    color: rgb(126, 108, 108);
+  }
+  
+  .signup_form button {
+    background-color: #1b419b;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .signup_form button:hover {
+    background-color: #278aa6;
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    .signup_form {
+      max-width: 100%;
+    }
+  
+    .signup_form button {
+      font-size: 14px;
+    }
+  }
+  
