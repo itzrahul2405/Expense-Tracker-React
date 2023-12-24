@@ -79,48 +79,50 @@ const SignUpPage = () => {
     }
 
   return (
-    <form className={classes.signup_form} onSubmit={submitHandler}>
-      {!haveAccount ? <h1>Sign Up</h1> : <h1>Log In</h1>}
-      <div>
-        <label htmlFor="e-mail">Enter Email: </label>
-        <input
-            type="email"
-            name="email"
-            id="e-mail"
-            placeholder="enter email"
-            required
-            onChange={emailHandler}
-        />        
-      </div>
-      <div>
-        <label htmlFor="password">Enter Password: </label>
-        <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="enter password"
-            required
-            onChange={passwordHandler}
-        />
-      </div>
-      {!haveAccount && <div>
-        <label htmlFor="confirm-password">Confirm Password: </label>
-        <input
-            type="confirm-password"
-            name="confirm-password"
-            id="confirm-password"
-            placeholder="please confirm password"
-            required
-            onChange={confirmPasswordHandler}
-        />
-      </div>}
-      <button type="submit">{!haveAccount ? 'Sign Up ': 'Log In'}</button>
-      {haveAccount && <a>forgot password</a>}
+    <div className={classes.container}>
+        <form className={classes.signup_form} onSubmit={submitHandler}>
+            {!haveAccount ? <h1>Sign Up</h1> : <h1>Log In</h1>}
+            <div>
+                <label htmlFor="e-mail">Enter Email: </label>
+                <input
+                    type="email"
+                    name="email"
+                    id="e-mail"
+                    placeholder="enter email"
+                    required
+                    onChange={emailHandler}
+                />        
+            </div>
+            <div>
+                <label htmlFor="password">Enter Password: </label>
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="enter password"
+                    required
+                    onChange={passwordHandler}
+                />
+            </div>
+            {!haveAccount && <div>
+                <label htmlFor="confirm-password">Confirm Password: </label>
+                <input
+                    type="confirm-password"
+                    name="confirm-password"
+                    id="confirm-password"
+                    placeholder="please confirm password"
+                    required
+                    onChange={confirmPasswordHandler}
+                />
+            </div>}
+            <button type="submit">{!haveAccount ? 'Sign Up ': 'Log In'}</button>
+            {haveAccount && <a>forgot password</a>}
 
 
-      {!haveAccount ? <p>Have an account <button onClick={accountExistenseHandler}>login</button></p> : <p>Not have an account <button onClick={accountExistenseHandler}>SignUp</button></p>}
+            {!haveAccount ? <p>Have an account <button onClick={accountExistenseHandler}>login</button></p> : <p>Not have an account <button onClick={accountExistenseHandler}>SignUp</button></p>}
 
-    </form>
+        </form>
+    </div>
   );
 };
 
