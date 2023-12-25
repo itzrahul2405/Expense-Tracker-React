@@ -1,0 +1,18 @@
+.navList{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    border: none;
+    background-color: lightblue;
+}
+
+.navList li{
+    color: white;
+    margin: 0px 10px;
+}
+
+.navList li button{
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+}

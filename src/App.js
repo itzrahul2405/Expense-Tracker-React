@@ -5,12 +5,14 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import {AuthContextProvider} from './auth-context.js'
 import ProfilePage from "./components/ProfilePage.js";
+import NavigationBar from "./components/navbar/NavigationBar.js";
 
 
 function App() {
   return (
     <AuthContextProvider>
     <div className="App">
+      <NavigationBar />
       <Switch>
         <Route path="/homePage">
           <HomePage />

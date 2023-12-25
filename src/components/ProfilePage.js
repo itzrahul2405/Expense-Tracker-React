@@ -58,7 +58,7 @@ const ProfilePage = () => {
   
     const data = await resp.json();
     // console.log(data)
-    // console.log(data.users[0])
+    // // console.log(data.users[0])
     setUserName(data.users[0].displayName);
     setUserImageUrl(data.users[0].photoUrl);
   };
