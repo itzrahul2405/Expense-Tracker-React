@@ -1,11 +1,7 @@
 /* HomePage.module.css */
 
 .container {
-    /* display: flex;
-    align-items: flex-start; 
-    justify-content: space-between;  */
-    height: 100vh;
-    padding: 20px; /* Optional padding for better spacing */
+    padding: 20px; 
   }
   
   .upper_container {
