@@ -116,7 +116,7 @@ const SignUpPage = () => {
                 />
             </div>}
             <button type="submit">{!haveAccount ? 'Sign Up ': 'Log In'}</button>
-            {haveAccount && <a>forgot password</a>}
+            {haveAccount && <a href="/forgot-password">forgot password</a>}
 
 
             {!haveAccount ? <p>Have an account <button onClick={accountExistenseHandler}>login</button></p> : <p>Not have an account <button onClick={accountExistenseHandler}>SignUp</button></p>}

@@ -1,14 +1,19 @@
 .navList{
+    width: 100vw;
+    height: 60px;
     list-style: none;
     display: flex;
     justify-content: center;
     border: none;
-    background-color: lightblue;
+    background-color: rgb(13, 31, 38);
+    display: flex;
+    align-items: center;
 }
 
 .navList li{
     color: white;
     margin: 0px 10px;
+    font-size: 20px;
 }
 
 .navList li button{
