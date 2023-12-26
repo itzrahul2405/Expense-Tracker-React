@@ -11,6 +11,7 @@ const NavigationBar = () => {
     return(
         <ul className={classes.navList}>
             <li><NavLink to='/homePage'>Home</NavLink></li>
+            <li><NavLink to='/expenses'>Expenses</NavLink></li>
             <li><NavLink to='/profile'>Profile</NavLink></li>
             <li><button onClick={logoutHandler}>logout</button></li>
         </ul>

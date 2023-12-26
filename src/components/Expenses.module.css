@@ -1,0 +1,85 @@
+/* Expenses.module.css */
+
+.expense_form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 80vw;
+    margin: auto;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #251b1b;
+    border-radius: 5px;
+    box-shadow: 0 0 10px black;
+  }
+  
+  /* Style each input container */
+  .expense_form div {
+    margin: 15px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .expense_form div label {
+    margin-bottom: 8px;
+    display: block;
+    margin-right: 10px;
+  }
+  
+  .expense_form div input, select {
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 4px; /* Adjust as needed */
+  }
+  
+  /* Style the submit button if needed */
+  .expense_form div input[type="submit"] {
+    background-color: #4caf50; /* Green color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .expense_form div input[type="submit"]:hover {
+    background-color: #45a049; /* Darker green color on hover */
+  }
+
+  /* Assuming you have a separate CSS file, e.g., Expenses.module.css */
+
+.expenses_list {
+    width: 60vw;
+    height: auto;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  
+  .expenses_list li {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #090404;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .expenses_list li button {
+    background-color: #dc3545; /* Bootstrap's danger color */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+  
+  .expenses_list li button:hover {
+    background-color: #c82333; /* Darker red color on hover */
+  }
+  
+  

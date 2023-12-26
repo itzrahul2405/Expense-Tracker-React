@@ -1,7 +1,6 @@
 import classes from './HomePage.module.css'
 import React from "react";
 import { NavLink } from "react-router-dom";
-import NavigationBar from './navbar/NavigationBar';
 
 const HomePage = () => {
 
@@ -25,7 +24,6 @@ const HomePage = () => {
 
   return (
     <>
-      <NavigationBar />
       <div className={classes.container}>
         <div className={classes.upper_container}>
           <p>WelCome to Expense Tracker !!</p>
