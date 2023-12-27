@@ -25,6 +25,7 @@ const Expenses = () => {
     })
     .then((data) => {
         console.log(data)
+        getData()
     })
     .catch(err => console.log(err.message))
 
@@ -61,7 +62,6 @@ const Expenses = () => {
         }
         // console.log(dataWithId)
         setExpenses(dataWithIds)
-        getData()
     })
     .catch(err => console.log(err.message))
   }
@@ -82,9 +82,12 @@ const Expenses = () => {
         if(!resp.ok){
             throw new Error('something went wrong, failed to delete data!')
         }
-        console.log(resp)
+        // console.log(resp)
+        getData()
+        console.log("Expense successfuly deleted");
     })    
     .catch(err => console.log(err.message))
+
   };
 
 
