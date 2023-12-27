@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import classes from "./Expenses.module.css";
 
 const Expenses = () => {
@@ -9,15 +9,24 @@ const Expenses = () => {
 
   const addExpenseHandler = (event) => {
     event.preventDefault();
-    setExpenses([
-      ...expenses,
-      {
-        id: new Date().getTime(),
-        category: categoryInputRef.current.value,
-        description: descriptionInputRef.current.value,
-        money: moneyInputRef.current.value,
-      },
-    ]);
+
+    fetch('https://expense-tracker-f0595-default-rtdb.firebaseio.com/expenses.json',{
+        method: 'POST',
+        body: JSON.stringify({category: categoryInputRef.current.value, description: descriptionInputRef.current.value, money: moneyInputRef.current.value,}),
+        headers: {'Content-type': 'application/json'}
+    })
+    .then((resp) => {
+        if(!resp.ok){
+            throw new Error('Adding new expense failed!')
+        }
+        else{
+            return resp.json()
+        }
+    })
+    .then((data) => {
+        console.log(data)
+    })
+    .catch(err => console.log(err.message))
 
     // Reset form values
     moneyInputRef.current.value = "";
@@ -25,17 +34,66 @@ const Expenses = () => {
     categoryInputRef.current.value = "food"; // Reset to the default category
   };
 
+
+
+
+
+  
+  const getData = () => {
+    fetch('https://expense-tracker-f0595-default-rtdb.firebaseio.com/expenses.json')
+    .then((resp) => {
+        if(!resp.ok){
+            throw new Error('Something went wrong, can not get data!')
+        }
+        else{
+            return resp.json()
+        }
+    })
+    .then((data) => {
+        // console.log(data)
+        const fetchedDataValues = Object.values(data || {})
+        const fetchedDataKeys = Object.keys(data || {})
+        // console.log(fetchedDataValues)
+        // console.log(fetchedDataKeys)
+        let dataWithIds = [];
+        for (let i=0; i<fetchedDataKeys.length; i++){
+            dataWithIds =  [...dataWithIds, {id: fetchedDataKeys[i], ...fetchedDataValues[i]}]
+        }
+        // console.log(dataWithId)
+        setExpenses(dataWithIds)
+        getData()
+    })
+    .catch(err => console.log(err.message))
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+
+
+
+
+
   const deleteExpenseHandler = (Id) => {
-    const updatedExpense = expenses.filter((item) => {
-        return item.id !== Id;
-    });
-    
-    setExpenses(updatedExpense)
+    fetch(`https://expense-tracker-f0595-default-rtdb.firebaseio.com/expenses/${Id}.json`,{
+        method: 'DELETE'
+    })
+    .then(resp => {
+        if(!resp.ok){
+            throw new Error('something went wrong, failed to delete data!')
+        }
+        console.log(resp)
+    })    
+    .catch(err => console.log(err.message))
   };
+
+
+
+
 
   const editExpenseHandler = (Id) => {
     const targetItem = expenses.find((item) => item.id === Id)
-    deleteExpenseHandler(Id)
+    deleteExpenseHandler(Id)   
     moneyInputRef.current.value = targetItem.money;
     descriptionInputRef.current.value = targetItem.description;
     categoryInputRef.current.value = targetItem.category;
