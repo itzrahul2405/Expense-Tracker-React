@@ -6,6 +6,7 @@ const Expenses = () => {
   const descriptionInputRef = useRef();
   const categoryInputRef = useRef();
   const [expenses, setExpenses] = useState([]);
+  const [totalExpense, setTotalExpense] = useState(0);
 
   const addExpenseHandler = (event) => {
     event.preventDefault();
@@ -25,7 +26,6 @@ const Expenses = () => {
     })
     .then((data) => {
         console.log(data)
-        getData()
     })
     .catch(err => console.log(err.message))
 
@@ -52,23 +52,27 @@ const Expenses = () => {
     })
     .then((data) => {
         // console.log(data)
-        const fetchedDataValues = Object.values(data || {})
-        const fetchedDataKeys = Object.keys(data || {})
+        const fetchedDataValues = Object.values(data || {})   // this contains array of data values (all expenses objects)
+        const fetchedDataKeys = Object.keys(data || {})       // this contains array of data keys (all expenses ids)
         // console.log(fetchedDataValues)
         // console.log(fetchedDataKeys)
         let dataWithIds = [];
+        let total = 0;
         for (let i=0; i<fetchedDataKeys.length; i++){
             dataWithIds =  [...dataWithIds, {id: fetchedDataKeys[i], ...fetchedDataValues[i]}]
+            total +=  Number(fetchedDataValues[i].money)
         }
         // console.log(dataWithId)
         setExpenses(dataWithIds)
+        setTotalExpense(total)
+
     })
     .catch(err => console.log(err.message))
   }
 
   useEffect(() => {
     getData()
-  }, [])
+  }, [expenses])
 
 
 
@@ -83,7 +87,6 @@ const Expenses = () => {
             throw new Error('something went wrong, failed to delete data!')
         }
         // console.log(resp)
-        getData()
         console.log("Expense successfuly deleted");
     })    
     .catch(err => console.log(err.message))
@@ -104,6 +107,7 @@ const Expenses = () => {
 
   return (
     <>
+      {(totalExpense > 10000) && <button>Active Premium</button>}
       <form className={classes.expense_form} onSubmit={addExpenseHandler}>
         <div>
           <label htmlFor="money-spent">Money: </label>
