@@ -1,5 +1,10 @@
 /* Expenses.module.css */
 
+.dark_theme{
+  background-color: black;
+  color: white;
+}
+
 .expense_form {
     display: flex;
     justify-content: space-between;

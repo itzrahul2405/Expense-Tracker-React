@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import classes from "./Expenses.module.css";
+import { type } from "@testing-library/user-event/dist/type";
 
 const Expenses = () => {
   const moneyInputRef = useRef();
@@ -7,6 +8,8 @@ const Expenses = () => {
   const categoryInputRef = useRef();
   const [expenses, setExpenses] = useState([]);
   const [totalExpense, setTotalExpense] = useState(0);
+  const [isPremiumActivated, setIsPremiumActivated] = useState(false)
+  const [theme, setTheme] = useState('light')
 
   const addExpenseHandler = (event) => {
     event.preventDefault();
@@ -105,9 +108,47 @@ const Expenses = () => {
     categoryInputRef.current.value = targetItem.category;
   };
 
+
+
+  const activatePremiumHandler = () => {
+    setIsPremiumActivated(!isPremiumActivated)
+    if(theme === 'dark'){
+      setTheme('light')
+    }
+    if(theme === 'light'){
+      setTheme('dark')
+    }
+  }
+
+  useEffect(() => {
+    if(totalExpense < 10000){
+      setTheme('light')
+    }
+  }, [totalExpense])
+
+  const themeHandler = () => {
+    if(theme === 'dark'){
+      setTheme('light')
+    }
+    if(theme === 'light'){
+      setTheme('dark')
+    }
+  }
+
+  useEffect(() => {
+    const downloadExp = document.getElementById('download-expense');
+    
+    if (downloadExp) {
+      const blob = new Blob([JSON.stringify(expenses)], { type: 'text/plain' });
+      downloadExp.href = URL.createObjectURL(blob);
+    }
+  }, [expenses]);
+
+
   return (
-    <>
-      {(totalExpense > 10000) && <button>Active Premium</button>}
+    <div className={theme === 'dark' ? classes.dark_theme : ''}>
+      {(totalExpense > 10000) && <button onClick={activatePremiumHandler}>Active Premium</button>}
+      {((totalExpense > 10000) && isPremiumActivated) && <button onClick={themeHandler}>{(theme === 'dark') ? 'Light' : 'dark'}</button>}
       <form className={classes.expense_form} onSubmit={addExpenseHandler}>
         <div>
           <label htmlFor="money-spent">Money: </label>
@@ -152,7 +193,9 @@ const Expenses = () => {
           </li>
         ))}
       </ul>
-    </>
+
+      <a id='download-expense' download='file1.txt'>Download Expenses</a>
+    </div>
   );
 };
 
